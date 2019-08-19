@@ -1,5 +1,3 @@
-#!/bin/python3
-
 import math
 import os
 import random
@@ -25,18 +23,14 @@ def diagonalDifference(arr):
         sum = sum * -1
     return sum
 
-if __name__ == '__main__':
-    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+n = int(input().strip())
 
-    n = int(input().strip())
+arr = []
 
-    arr = []
+for _ in range(n):
+    arr.append(list(map(int, input().rstrip().split()))) # Way to take 2D array as input
 
-    for _ in range(n):
-        arr.append(list(map(int, input().rstrip().split()))) # Way to take 2D array as input
+result = diagonalDifference(arr)
 
-    result = diagonalDifference(arr)
+print(str(result))
 
-    fptr.write(str(result))
-
-    fptr.close()
