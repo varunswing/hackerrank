@@ -209,3 +209,30 @@ Write a query to print the pattern P(20).
 
 set @i = 0;
 select repeat('* ', @i := @i + 1) from information_schema.tables limit 20;
+
+
+31. Given the CITY and COUNTRY tables, query the sum of the populations of all cities where the CONTINENT is 'Asia'.
+
+Note: CITY.CountryCode and COUNTRY.Code are matching key columns.
+
+SELECT SUM(City.population)
+FROM Country
+INNER JOIN City
+    ON Country.Code = City.CountryCode
+WHERE Country.Continent='Asia';
+
+32. Given the CITY and COUNTRY tables, query the names of all cities where the CONTINENT is 'Africa'.
+Note: CITY.CountryCode and COUNTRY.Code are matching key columns
+
+SELECT City.Name 
+FROM City, Country 
+WHERE City.CountryCode = Country.Code AND Continent = 'Africa' ;
+
+
+33. Given the CITY and COUNTRY tables, query the names of all the continents (COUNTRY.Continent) and their respective average city populations (CITY.Population) rounded down to the nearest integer.
+Note: CITY.CountryCode and COUNTRY.Code are matching key columns.
+
+select COUNTRY.Continent, floor(avg(CITY.Population)) 
+from city, country 
+where CITY.CountryCode = COUNTRY.Code 
+group by country.continent;
